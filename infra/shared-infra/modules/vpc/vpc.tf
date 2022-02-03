@@ -1,14 +1,14 @@
 resource "aws_vpc" "main" {
-  cidr_block = "172.17.0.0/16"
+  cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "private" {
-  cidr_block = "172.17.0.0/24"
+  cidr_block = "10.0.1.0/24"
   vpc_id     = aws_vpc.main.id
 }
 
 resource "aws_subnet" "public" {
-  cidr_block              = "172.17.10.0/16"
+  cidr_block              = "10.0.101.0/24"
   vpc_id                  = aws_vpc.main.id
   map_public_ip_on_launch = true
 }
