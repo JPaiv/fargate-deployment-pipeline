@@ -34,4 +34,5 @@ module "fargate" {
   public_subnet_id  = data.shared_infra.public_subnet_id
   private_subnet_id = data.shared_infra.private_subnet_id
   environment       = var.environment
+  app_image         = "test"
 }

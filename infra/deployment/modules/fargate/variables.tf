@@ -63,7 +63,3 @@ variable "fargate_memory" {
   default     = "2048"
 }
 
-variable "app_image" {
-  type        = string
-  description = "Image for deployment."
-}
