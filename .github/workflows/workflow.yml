@@ -6,7 +6,7 @@ on:
 
 env:
   region: eu-west-1
-  TF_VAR_default_region: ${{ env.region }}
+  TF_VAR_default_region: eu-west-1
   TF_VAR_environment: test
 
 jobs:
