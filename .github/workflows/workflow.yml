@@ -10,7 +10,7 @@ env:
   TF_VAR_environment: test
 
 jobs:
-  Serverless-verification-api-deploy:
+  terraform-deploy-shared-infra:
     runs-on: ubuntu-latest
     defaults:
       run:        
