@@ -30,7 +30,7 @@ provider "aws" {
 
 module "fargate" {
   source            = "../modules/fargate"
-  main_vpc_id       = data.shared_infra.vpc_main_id
+  main_vpc_id       = data.shared_infra.main_vpc_id
   public_subnet_id  = data.shared_infra.public_subnet_id
   private_subnet_id = data.shared_infra.private_subnet_id
   environment       = var.environment

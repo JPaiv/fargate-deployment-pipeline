@@ -62,3 +62,8 @@ variable "fargate_memory" {
   description = "Fargate instance memory to provision (in MiB)"
   default     = "2048"
 }
+
+variable "app_image" {
+  type        = string
+  description = "Image for deployment."
+}
