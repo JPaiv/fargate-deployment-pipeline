@@ -1,10 +1,10 @@
 
 terraform {
   backend "s3" {
-    bucket         = "test.terraform.state.config.fi.bucket"
-    key            = "test/state/shared-infra" # Format: ENVIRONMENT/state/PROJECT
-    region         = "eu-west-1"
-    dynamodb_table = "terraform-lock"
+    bucket = "test.terraform.state.config.fi.bucket"
+    key    = "test/state/shared-infra" # Format: ENVIRONMENT/state/PROJECT
+    region = "eu-west-1"
+    # dynamodb_table = "test-terraform-lock-shared"
   }
 }
 
