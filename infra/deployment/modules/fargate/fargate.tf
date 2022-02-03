@@ -1,7 +1,7 @@
 resource "aws_security_group" "alb_security_group" {
   name        = "${var.environment}-alb-security-group"
   description = "controls access to the ALB"
-  vpc_id      = var.vpc_main_id
+  vpc_id      = var.main_vpc_id
 
   ingress {
     protocol    = "tcp"
@@ -22,7 +22,7 @@ resource "aws_security_group" "alb_security_group" {
 resource "aws_security_group" "ecs_tasks_security_group" {
   name        = "${var.environment}-ecs-task"
   description = "allow inbound access from the ALB only"
-  vpc_id      = var.vpc_main_id
+  vpc_id      = var.main_vpc_id
 
   ingress {
     protocol        = "tcp"
@@ -51,7 +51,7 @@ resource "aws_alb_target_group" "main_alb_target_group" {
   name        = "${var.environment}-main-alb-target-group"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = var.vpc_main_id
+  vpc_id      = var.main_vpc_id
   target_type = "ip"
 }
 

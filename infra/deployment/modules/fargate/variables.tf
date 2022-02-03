@@ -2,7 +2,7 @@ variable "environment" {
   type = string
 }
 
-variable "vpc_main_id" {
+variable "main_vpc_id" {
   type        = string
   description = "Main vpc id from shared infra."
 }
