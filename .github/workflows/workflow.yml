@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:        
-        working-directory: ./infra/shared-infra
+        working-directory: ./infra/shared-infra/test
     steps:
       - uses: actions/checkout@v2
 
