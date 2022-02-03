@@ -19,7 +19,7 @@ provider "aws" {
   }
 }
 
-module "vp" {
+module "vpc" {
   source = "../modules/vpc"
 }
 

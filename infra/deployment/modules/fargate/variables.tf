@@ -40,7 +40,7 @@ variable "app_port" {
   default     = 3000
 }
 
-variable "containe_count" {
+variable "container_count" {
   type        = number
   description = "Number of docker containers to run"
   default     = 3
