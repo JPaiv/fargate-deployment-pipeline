@@ -22,10 +22,10 @@ provider "aws" {
 }
 
 module "vp" {
-  source = "../vpc"
+  source = "../modules/vpc"
 }
 
 module "ecr" {
-  source      = "../ecr"
+  source      = "../modules/ecr"
   environment = var.environment
 }
