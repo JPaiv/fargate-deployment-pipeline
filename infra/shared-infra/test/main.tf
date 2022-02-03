@@ -1,4 +1,3 @@
-
 terraform {
   backend "s3" {
     bucket = "test.terraform.state.config.fi.bucket"
@@ -10,7 +9,6 @@ terraform {
 
 provider "aws" {
   region = var.default_region
-  #   profile = "default"
 
   default_tags {
     tags = {
