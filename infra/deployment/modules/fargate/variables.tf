@@ -1,13 +1,20 @@
 variable "environment" {
-  type        = string
-  description = "Current stage of the deployment process."
-  default     = "test"
+  type = string
 }
 
-variable "default_region" {
+variable "vpc_main_id" {
   type        = string
-  description = "The AWS region things are created in"
-  default     = "eu-west-1"
+  description = "Main vpc id from shared infra."
+}
+
+variable "public_subnet_id" {
+  type        = string
+  description = "Main vpc public subnet id from shared infra."
+}
+
+variable "private_subnet_id" {
+  type        = string
+  description = "Main vpc private subnet id from shared infra."
 }
 
 variable "ecs_task_execution_role_name" {
@@ -25,7 +32,6 @@ variable "ecs_auto_scale_role_name" {
 variable "app_image" {
   type        = string
   description = "Docker image to run in the ECS cluster"
-  default     = "bradfordhamilton/crystal_blockchain:latest"
 }
 
 variable "app_port" {
