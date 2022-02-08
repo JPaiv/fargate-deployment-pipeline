@@ -17,9 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./src    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+        working-directory: ./src
     permissions:
       contents: 'read'
       id-token: 'write'
