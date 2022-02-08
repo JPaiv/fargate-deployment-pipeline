@@ -47,6 +47,8 @@ jobs:
 
   terraform-deploy-application:
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_image_tag: ${{ github.sha }}
     defaults:
       run:        
         working-directory: ./infra/deployment/test
