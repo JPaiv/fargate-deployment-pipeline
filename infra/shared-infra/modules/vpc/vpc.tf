@@ -4,7 +4,7 @@
 data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "main" {
-  cidr_block = "192.168.255.255"
+  cidr_block = "192.168.0.0/20"
 }
 
 # Create var.az_count private subnets, each in a different AZ
@@ -40,7 +40,7 @@ resource "aws_route" "internet_access" {
 resource "aws_eip" "gw" {
   count      = "${var.az_count}"
   vpc        = true
-  depends_on = ["aws_internet_gateway.gw"]
+  depends_on = [aws_internet_gateway.gw]
 }
 
 resource "aws_nat_gateway" "gw" {
