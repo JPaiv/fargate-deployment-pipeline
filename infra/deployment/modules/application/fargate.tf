@@ -8,7 +8,7 @@ resource "aws_security_group" "ecs_tasks_security_group" {
     protocol        = "tcp"
     from_port       = var.app_port
     to_port         = var.app_port
-    security_groups = [aws_security_group.alb_security_group.id]
+    security_groups = [var.alb_security_group_id]
   }
 
   egress {

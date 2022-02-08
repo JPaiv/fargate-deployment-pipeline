@@ -7,6 +7,12 @@ variable "main_vpc_id" {
   description = "Main vpc id from shared infra."
 }
 
+variable "alb_security_group_id" {
+  type = string
+  description = "Application load balancer security group from shared infra."
+}
+
+
 variable "public_subnet_ids" {
   type        = list(string)
   description = "Main vpc public subnet id from shared infra."

@@ -33,7 +33,7 @@ variable "app_port" {
   default     = 3000
 }
 
-variable "alb_security_group_i" {
+variable "alb_security_group_id" {
   type = string
   description = "Application load balancer security group from shared infra."
 }
