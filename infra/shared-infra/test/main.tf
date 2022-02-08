@@ -21,6 +21,7 @@ provider "aws" {
 
 module "vpc" {
   source = "../modules/vpc"
+  environment = var.environment
 }
 
 module "ecr" {
