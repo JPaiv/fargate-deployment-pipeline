@@ -33,6 +33,11 @@ variable "app_port" {
   default     = 3000
 }
 
+variable "alb_security_group_i" {
+  type = string
+  description = "Application load balancer security group from shared infra."
+}
+
 variable "container_count" {
   type        = number
   description = "Number of docker containers to run"

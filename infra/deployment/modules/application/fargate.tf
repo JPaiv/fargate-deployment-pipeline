@@ -2,7 +2,7 @@
 resource "aws_security_group" "ecs_tasks_security_group" {
   name        = "${var.environment}-ecs-task"
   description = "allow inbound access from the ALB only"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.main_vpc_id
 
   ingress {
     protocol        = "tcp"
@@ -30,7 +30,7 @@ resource "aws_ecs_task_definition" "main_ecs_fargate_task-definition" {
 [
   {
     "cpu": ${var.fargate_cpu},
-    "image": "${var.app_image}",
+    "image": "${var.repository_ur}:${var.app_image}",
     "memory": ${var.fargate_memory},
     "name": "app",
     "networkMode": "awsvpc",
