@@ -40,7 +40,7 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
         
-      - name: Terraform Outputs
+      - name: Terraform Output
         id: outputs
-        run: terraform outputs
+        run: terraform output
     
