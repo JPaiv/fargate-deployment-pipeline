@@ -92,7 +92,7 @@ resource "aws_security_group" "alb_security_group" {
 ### ALB
 resource "aws_alb" "main_alb" {
   name            = "${var.environment}-main-alb"
-  subnets         = [aws_subnet.private.*.id]
+  subnets         = ["${aws_subnet.public.*.id}"]
   security_groups = [aws_security_group.alb_security_group.id]
 }
 
