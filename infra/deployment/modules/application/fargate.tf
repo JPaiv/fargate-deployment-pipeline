@@ -47,7 +47,7 @@ DEFINITION
 
 resource "aws_ecs_service" "main" {
   name            = "${var.environment}-fargate-ecs-service"
-  cluster         = aws_ecs_cluster.main_ecs_fargate_cluster.id
+  cluster         = var.cluster_id
   task_definition = aws_ecs_task_definition.main_ecs_fargate_task-definition.arn
   desired_count   = var.container_count
   launch_type     = "FARGATE"
@@ -58,12 +58,8 @@ resource "aws_ecs_service" "main" {
   }
 
   load_balancer {
-    target_group_arn = aws_alb_target_group.main_alb_target_group.arn
+    target_group_arn = var.main_alb_target_group_arn
     container_name   = "app"
     container_port   = var.app_port
   }
-
-  depends_on = [
-    aws_alb_listener.front_end_alb_listener,
-  ]
 }

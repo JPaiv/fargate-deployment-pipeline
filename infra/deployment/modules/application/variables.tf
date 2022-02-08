@@ -73,3 +73,10 @@ variable "fargate_memory" {
   default     = "2048"
 }
 
+variable "cluster_id" {
+  type = string
+}
+
+variable "main_alb_target_group_ar" {
+  type = string
+}
