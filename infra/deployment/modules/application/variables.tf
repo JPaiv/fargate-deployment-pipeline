@@ -34,9 +34,10 @@ variable "app_image" {
   description = "Docker image to run in the ECS cluster"
 }
 
-variable "repository_url"
+variable "repository_url" {
  type = string
  description = "Url of the repo where the image is."
+}
 
 variable "app_port" {
   type        = number
