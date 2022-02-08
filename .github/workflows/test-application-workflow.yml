@@ -1,4 +1,4 @@
-name: deploy-shared-infrastrucsture
+name: deploy-application-infrastrucsture
 
 on:
   push:
