@@ -49,4 +49,4 @@ jobs:
         run: terraform output
       
       - name: Terraform destroy
-        run: terraform destroy -auto-approv
+        run: terraform destroy -auto-approve
