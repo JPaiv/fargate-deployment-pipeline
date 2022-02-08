@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "test.terraform.state.config.fi.bucket"
+    bucket = "test.terraform.state.config.fi.test.bucket"
     key    = "test/state/shared-infra-config" # Format: ENVIRONMENT/state/PROJECT
     region = "eu-west-1"
     # dynamodb_table = "test-terraform-lock-shared"
