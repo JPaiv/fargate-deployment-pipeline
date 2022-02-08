@@ -77,6 +77,6 @@ variable "cluster_id" {
   type = string
 }
 
-variable "main_alb_target_group_ar" {
+variable "main_alb_target_group_arn" {
   type = string
 }
