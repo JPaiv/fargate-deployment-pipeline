@@ -1,4 +1,4 @@
 variable "environment" {
   type        = string
-  description = "WHich stage we currently add."
+  description = "Which stage we currently add."
 }
