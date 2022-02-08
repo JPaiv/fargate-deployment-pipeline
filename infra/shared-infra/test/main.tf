@@ -28,3 +28,9 @@ module "ecr" {
   source      = "../modules/ecr"
   environment = var.environment
 }
+
+module "ecs" {
+  source      = "../modules/ecs"
+  environment = var.environment
+}
+
