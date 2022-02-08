@@ -22,10 +22,9 @@ variable "ecs_auto_scale_role_name" {
   default     = "EcsAutoScaleRole"
 }
 
-variable "app_image" {
+variable "image_tag" {
   type        = string
   description = "Docker image to run in the ECS cluster"
-  default     = "bradfordhamilton/crystal_blockchain:latest"
 }
 
 variable "app_port" {
