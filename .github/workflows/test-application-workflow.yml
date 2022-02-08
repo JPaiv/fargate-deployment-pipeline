@@ -11,6 +11,35 @@ env:
   TF_VAR_environment: test
 
 jobs:
+  build-application:
+    name: "Deploy application container."
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.region }}
+
+      - name: 'Docker build'
+        run: docker build -t flask-api .
+
+      - name: 'Tag image for container registry'
+        run: docker tag flask-api:latest eu.gcr.io/project-texas/flask-api
+
+      - name: 'Push to container registry'
+        run: docker push eu.gcr.io/project-texas/flask-api
+
   terraform-deploy-application:
     runs-on: ubuntu-latest
     defaults:
