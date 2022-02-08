@@ -30,7 +30,7 @@ provider "aws" {
 
 module "fargate" {
   source            = "../modules/application"
-  main_vpc_id       = data.terraform_remote_state.shared_infra.output.main_vpc_id
+  main_vpc_id       = data.terraform_remote_state.shared_infra.main_vpc_id
   public_subnet_ids  = data.terraform_remote_state.shared_infra.outputs.public_subnet_ids
   private_subnet_ids = data.terraform_remote_state.shared_infra.outputs.private_subnet_ids
   repository_url = data.terraform_remote_state.shared_infra.outputs.repository_url
