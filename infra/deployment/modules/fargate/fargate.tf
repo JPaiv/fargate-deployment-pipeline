@@ -43,7 +43,7 @@ resource "aws_security_group" "ecs_tasks_security_group" {
 
 resource "aws_alb" "main_alb" {
   name            = "${var.environment}-main-alb"
-  subnets         = [var.public_subnet_id]
+  subnets         = var.public_subnet_ids
   security_groups = ["${aws_security_group.alb_security_group.id}"]
 }
 
@@ -108,7 +108,7 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups = [aws_security_group.ecs_tasks_security_group.id]
-    subnets         = [var.private_subnet_id]
+    subnets         = var.private_subnet_ids
   }
 
   load_balancer {

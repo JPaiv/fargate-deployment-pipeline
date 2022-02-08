@@ -31,8 +31,8 @@ provider "aws" {
 module "fargate" {
   source            = "../modules/fargate"
   main_vpc_id       = data.terraform_remote_state.shared_infra.outputs.main_vpc_id
-  public_subnet_id  = data.terraform_remote_state.shared_infra.outputs.public_subnet_id
-  private_subnet_id = data.terraform_remote_state.shared_infra.outputs.private_subnet_id
+  public_subnet_id  = data.terraform_remote_state.shared_infra.outputs.public_subnet_ids
+  private_subnet_id = data.terraform_remote_state.shared_infra.outputs.private_subnet_ids
   environment       = var.environment
   app_image         = "test"
 }

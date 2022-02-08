@@ -7,13 +7,13 @@ variable "main_vpc_id" {
   description = "Main vpc id from shared infra."
 }
 
-variable "public_subnet_id" {
-  type        = string
+variable "public_subnet_ids" {
+  type        = list(string)
   description = "Main vpc public subnet id from shared infra."
 }
 
-variable "private_subnet_id" {
-  type        = string
+variable "private_subnet_ids" {
+  type        = list(string)
   description = "Main vpc private subnet id from shared infra."
 }
 
