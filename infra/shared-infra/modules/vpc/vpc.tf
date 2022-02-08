@@ -88,29 +88,8 @@ resource "aws_security_group" "alb_security_group" {
   }
 }
 
-# Traffic to the ECS Cluster should only come from the ALB
-resource "aws_security_group" "ecs_tasks_security_group" {
-  name        = "${var.environment}-ecs-task"
-  description = "allow inbound access from the ALB only"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    protocol        = "tcp"
-    from_port       = var.app_port
-    to_port         = var.app_port
-    security_groups = [aws_security_group.alb_security_group.id]
-  }
-
-  egress {
-    protocol    = "-1"
-    from_port   = 0
-    to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
 
 ### ALB
-
 resource "aws_alb" "main_alb" {
   name            = "${var.environment}-main-alb"
   subnets         = [aws_subnet.private.*.id]
