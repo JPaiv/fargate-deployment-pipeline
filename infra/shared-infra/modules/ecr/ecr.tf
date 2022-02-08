@@ -56,7 +56,7 @@ resource "aws_ecr_lifecycle_policy" "main_repo_policy" {
                 "tagStatus": "untagged",
                 "countType": "sinceImagePushed",
                 "countUnit": "days",
-                "countNumber": 3
+                "countNumber": 1
             },
             "action": {
                 "type": "expire"
