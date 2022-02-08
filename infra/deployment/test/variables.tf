@@ -30,7 +30,7 @@ variable "image_tag" {
 variable "app_port" {
   type        = number
   description = "Port exposed by the docker image to redirect traffic to"
-  default     = 3000
+  default     = 5000
 }
 
 variable "container_count" {
