@@ -47,6 +47,7 @@ jobs:
 
   terraform-deploy-application:
     runs-on: ubuntu-latest
+    needs: build-application
     env:
       TF_VAR_image_tag: ${{ github.sha }}
     defaults:
