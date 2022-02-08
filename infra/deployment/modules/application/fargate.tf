@@ -30,7 +30,7 @@ resource "aws_ecs_task_definition" "main_ecs_fargate_task-definition" {
 [
   {
     "cpu": ${var.fargate_cpu},
-    "image": "${var.repository_ur}:${var.app_image}",
+    "image": "${var.repository_url}:${var.app_image}",
     "memory": ${var.fargate_memory},
     "name": "app",
     "networkMode": "awsvpc",
