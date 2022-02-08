@@ -1,16 +1,16 @@
 data "terraform_remote_state" "shared_infra" {
   backend = "s3"
   config = {
-    bucket = "test.terraform.state.config.fi.bucket"
-    key    = "test/state/shared-infra" # Format: ENVIRONMENT/state/PROJECT
+    bucket = "test.terraform.state.config.fi.test.bucke"
+    key    = "test/state/shared-infra-config" # Format: ENVIRONMENT/state/PROJECT
     region = "eu-west-1"
   }
 }
 
 terraform {
   backend "s3" {
-    bucket = "test.terraform.state.config.fi.bucket"
-    key    = "test/state/deployment" # Format: ENVIRONMENT/state/PROJECT
+    bucket = "test.terraform.state.config.fi.test.bucke"
+    key    = "test/state/application" # Format: ENVIRONMENT/state/PROJECT
     region = "eu-west-1"
     # dynamodb_table = "test-terraform-lock-shared"
   }
