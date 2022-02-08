@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecs_task_role" {
-  name = "${var.name}-ecsTaskRole"
+  name = "${var.environment}}-ecsTaskRole"
  
   assume_role_policy = <<EOF
 {
@@ -19,7 +19,7 @@ EOF
 }
  
 resource "aws_iam_policy" "dynamodb" {
-  name        = "${var.name}-task-policy-dynamodb"
+  name        = "${var.environment}}-task-policy-dynamodb"
   description = "Policy that allows access to DynamoDB"
  
  policy = <<EOF
@@ -51,7 +51,7 @@ EOF
 resource "aws_iam_role_policy_attachment" "ecs-task-role-policy-attachment" {
   role       = aws_iam_role.ecs_task_role.name
   policy_arn = aws_iam_policy.dynamodb.arn
-  name = "${var.name}-ecsTaskExecutionRole"
+  name = "${var.environment}-ecsTaskExecutionRole"
  
   assume_role_policy = <<EOF
     {
@@ -68,6 +68,26 @@ resource "aws_iam_role_policy_attachment" "ecs-task-role-policy-attachment" {
      ]
     }
     EOF
+}
+ 
+resource "aws_iam_role" "ecs_task_execution_role" {
+  name = "${var.environment}-ecsTaskExecutionRole"
+ 
+  assume_role_policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": "sts:AssumeRole",
+     "Principal": {
+       "Service": "ecs-tasks.amazonaws.com"
+     },
+     "Effect": "Allow",
+     "Sid": ""
+   }
+ ]
+}
+EOF
 }
  
 resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attachment" {
