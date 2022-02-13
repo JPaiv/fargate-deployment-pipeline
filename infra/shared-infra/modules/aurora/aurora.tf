@@ -1,5 +1,5 @@
 resource "aws_rds_cluster" "main" {
-  cluster_identifier      = "${var.environment}-aurora-serverless-cluster"
+  cluster_identifier      = "${var.environment}AuroraServerlessMovies"
   engine                  = "aurora-mysql"
   engine_mode             = "serverless"  
   database_name           = "${var.environment}-movie-database"
