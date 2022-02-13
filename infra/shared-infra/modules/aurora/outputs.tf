@@ -7,7 +7,7 @@ output "database_name" {
 }
 
 output "database_port" {
-    value = aws_rds_cluster.main.database_name
+    value = aws_rds_cluster.main.port
 }
 
 output "database_arn" {

@@ -25,3 +25,19 @@ output "main_alb_target_group_arn" {
 output "repository_url" {
     value = module.ecr.repository_url
 }
+
+output "database_endpoint" {
+    value = module.aurora.database_endpoint
+}
+
+output "database_name" {
+    value = module.aurora.database_name
+}
+
+output "database_port" {
+    value = module.aurora.database_port
+}
+
+output "database_arn" {
+    value = module.aurora.database_arn
+}
