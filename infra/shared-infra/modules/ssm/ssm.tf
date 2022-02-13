@@ -13,11 +13,11 @@ resource "random_string" "aurora_cluster_master_username" {
 resource "aws_ssm_parameter" "ssm_aurora_cluster_master_password" {
   name  = "${var.environment}-aurora_cluster_master_password"
   type  = "SecureString"
-  value = random_passwordaurora_cluster_master_password.result
+  value = random_password.aurora_cluster_master_password.result
 }
 
 resource "aws_ssm_parameter" "ssm_aurora_cluster_master_username" {
   name  = "${var.environment}-aurora_cluster_master_username"
   type  = "SecureString"
-  value = random_password.aurora_cluster_master_username.result
+  value = random_string.aurora_cluster_master_username.result
 }
