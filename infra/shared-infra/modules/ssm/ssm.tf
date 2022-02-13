@@ -4,7 +4,7 @@ resource "random_password" "aurora_cluster_master_password" {
   override_special = "!#$%^*()-=+_?{}|"
 }
 
-resource "random_string" "aurora_cluster_master_username" {
+resource "random_random_pet" "aurora_cluster_master_username" {
   length           = 16
   special          = true
   override_special = "!#$%^*()-=+_?{}|"
@@ -19,5 +19,5 @@ resource "aws_ssm_parameter" "ssm_aurora_cluster_master_password" {
 resource "aws_ssm_parameter" "ssm_aurora_cluster_master_username" {
   name  = "${var.environment}-aurora_cluster_master_username"
   type  = "SecureString"
-  value = random_string.aurora_cluster_master_username.result
+  value = random_pet.aurora_cluster_master_username.result
 }
