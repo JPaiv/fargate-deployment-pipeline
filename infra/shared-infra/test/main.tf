@@ -37,11 +37,12 @@ module "ecs" {
 module "ssm" {
   source      = "../modules/ssm"
   environment = var.environment
+  aurora_cluster_master_username = var.aurora_cluster_master_username
 }
 
 module "aurora" {
   source      = "../modules/aurora"
   environment = var.environment
-  aurora_cluster_master_username = module.ssm.aurora_cluster_master_username
+  aurora_cluster_master_username = var.aurora_cluster_master_username
   aurora_cluster_master_password = module.ssm.aurora_cluster_master_password
 }

@@ -5,5 +5,9 @@ variable "environment" {
 
 variable "default_region" {
   type        = string
-  description = "Get the default region from GHA pipeline env  variables."
+  description = "Get the default region from GHA pipeline enV variables."
+}
+
+variable "aurora_master_username" {
+  type = string
 }
