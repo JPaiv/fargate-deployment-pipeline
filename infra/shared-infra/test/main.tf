@@ -42,6 +42,6 @@ module "ssm" {
 module "aurora" {
   source      = "../modules/aurora"
   environment = var.environment
-  master_username = module.ssm.aurora_cluster_master_username
-  master_password = module.ssm.aurora_cluster_master_password
+  aurora_cluster_master_username = module.ssm.aurora_cluster_master_username
+  aurora_cluster_master_password = module.ssm.aurora_cluster_master_password
 }
