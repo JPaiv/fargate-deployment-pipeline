@@ -6,6 +6,7 @@ env:
   region: eu-west-1
   TF_VAR_default_region: eu-west-1
   TF_VAR_environment: test
+  TF_VAR_aurora_master_username : ${{ secrets.AURORA_MASTER_USERNAME }}
 
 jobs:
   terraform-deploy-shared-infrastrucsture:
