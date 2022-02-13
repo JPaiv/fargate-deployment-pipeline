@@ -14,6 +14,8 @@ jobs:
     defaults:
       run:        
         working-directory: ./infra/shared-infra/test
+    env:
+      TF_VAR_aurora_master_username : ${{ secrets.AURORA_MASTER_USERNAME }}
     steps:
       - uses: actions/checkout@v2
 
