@@ -4,8 +4,8 @@ resource "aws_rds_cluster" "main" {
   engine_mode             = "serverless"  
   database_name           = "${var.environment}MovieDatabase"
   enable_http_endpoint    = true  
-  master_username         = var.aurora_cluster_master_username
-  master_password         = var.aurora_cluster_master_password
+  master_username         = var.aurora_master_username
+  master_password         = var.aurora_master_password
   apply_immediately = true
   backup_retention_period = 1
   

@@ -1,3 +1,3 @@
-output "aurora_cluster_master_password" {
-    value = random_password.aurora_cluster_master_password.result
+output "aurora_master_password" {
+    value = random_password.aurora_master_password.result
 }

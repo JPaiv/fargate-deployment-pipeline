@@ -3,10 +3,10 @@ variable "environment" {
   description = "Which stage we currently add."
 }
 
-variable "aurora_cluster_master_username" {
+variable "aurora_master_username" {
     type = string
 }
 
-variable "aurora_cluster_master_password" {
+variable "aurora_master_password" {
     type = string
 }
