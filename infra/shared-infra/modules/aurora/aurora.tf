@@ -1,8 +1,8 @@
 resource "aws_rds_cluster" "main" {
-  cluster_identifier      = "${var.environment}AuroraServerlessMovies"
+  cluster_identifier      = "${var.environment}-aurora-serverless-cluster"
   engine                  = "aurora-mysql"
   engine_mode             = "serverless"  
-  database_name           = "${var.environment}-movie-database"
+  database_name           = "${var.environment}MovieDatabase"
   enable_http_endpoint    = true  
   master_username         = var.aurora_cluster_master_username
   master_password         = var.aurora_cluster_master_password
