@@ -10,4 +10,5 @@ variable "default_region" {
 
 variable "aurora_master_username" {
   type = string
+  default = "moviemasteruser"
 }
