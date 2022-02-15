@@ -66,6 +66,9 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
+      
+      - name: Lint Terraform
+        uses: actionshub/terraform-lint@main
 
       # Add just in case there is a locked state
       # - name: 'Unlock terraform state'
