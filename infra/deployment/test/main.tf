@@ -29,14 +29,14 @@ provider "aws" {
 }
 
 module "fargate" {
-  source            = "../modules/application"
-  main_vpc_id       = data.terraform_remote_state.shared_infra.outputs.main_vpc_id
-  public_subnet_ids  = data.terraform_remote_state.shared_infra.outputs.public_subnet_ids
-  private_subnet_ids = data.terraform_remote_state.shared_infra.outputs.private_subnet_ids
-  repository_url = data.terraform_remote_state.shared_infra.outputs.repository_url
-  alb_security_group_id = data.terraform_remote_state.shared_infra.outputs.alb_security_group_id
-  cluster_id = data.terraform_remote_state.shared_infra.outputs.cluster_id
+  source                    = "../modules/application"
+  main_vpc_id               = data.terraform_remote_state.shared_infra.outputs.main_vpc_id
+  public_subnet_ids         = data.terraform_remote_state.shared_infra.outputs.public_subnet_ids
+  private_subnet_ids        = data.terraform_remote_state.shared_infra.outputs.private_subnet_ids
+  repository_url            = data.terraform_remote_state.shared_infra.outputs.repository_url
+  alb_security_group_id     = data.terraform_remote_state.shared_infra.outputs.alb_security_group_id
+  cluster_id                = data.terraform_remote_state.shared_infra.outputs.cluster_id
   main_alb_target_group_arn = data.terraform_remote_state.shared_infra.outputs.main_alb_target_group_arn
-  environment       = var.environment
-  app_image         = var.image_tag
+  environment               = var.environment
+  app_image                 = var.image_tag
 }

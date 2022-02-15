@@ -20,7 +20,7 @@ resource "aws_subnet" "public" {
   count                   = var.az_count
   cidr_block              = cidrsubnet(aws_vpc.main.cidr_block, 8, var.az_count + count.index)
   availability_zone       = data.aws_availability_zones.available.names[count.index]
-  vpc_id                  =  aws_vpc.main.id
+  vpc_id                  = aws_vpc.main.id
   map_public_ip_on_launch = true
 }
 
@@ -38,7 +38,7 @@ resource "aws_route" "internet_access" {
 
 # Create a NAT gateway with an EIP for each private subnet to get internet connectivity
 resource "aws_eip" "gw" {
-  count      = "${var.az_count}"
+  count      = var.az_count
   vpc        = true
   depends_on = [aws_internet_gateway.gw]
 }
@@ -56,7 +56,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = element(aws_nat_gateway.gw.*.id, count.index)
   }
 }
@@ -92,7 +92,7 @@ resource "aws_security_group" "alb_security_group" {
 ### ALB
 resource "aws_alb" "main_alb" {
   name            = "${var.environment}-main-alb"
-  subnets = [for subnet in aws_subnet.public : subnet.id]
+  subnets         = [for subnet in aws_subnet.public : subnet.id]
   security_groups = [aws_security_group.alb_security_group.id]
 }
 

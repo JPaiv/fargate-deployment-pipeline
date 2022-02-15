@@ -8,7 +8,7 @@ variable "main_vpc_id" {
 }
 
 variable "alb_security_group_id" {
-  type = string
+  type        = string
   description = "Application load balancer security group from shared infra."
 }
 
@@ -40,8 +40,8 @@ variable "app_image" {
 }
 
 variable "repository_url" {
- type = string
- description = "Url of the repo where the image is."
+  type        = string
+  description = "Url of the repo where the image is."
 }
 
 variable "app_port" {

@@ -15,13 +15,13 @@ output "alb_security_group_id" {
 }
 
 output "main_alb_target_group_arn" {
- value = module.vpc.main_alb_target_group_arn
- }
- 
- output "cluster_id" {
-    value = module.ecs.cluster_id
+  value = module.vpc.main_alb_target_group_arn
+}
+
+output "cluster_id" {
+  value = module.ecs.cluster_id
 }
 
 output "repository_url" {
-    value = module.ecr.repository_url
+  value = module.ecr.repository_url
 }
