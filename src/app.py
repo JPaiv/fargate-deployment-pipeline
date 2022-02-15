@@ -7,7 +7,7 @@ app.config["DEBUG"] = True
 
 @app.route('/hello', methods=['GET'])
 def hello_world_api():
-    return jsonify("Task has been updated successfully!")
+    return jsonify("Fiare is the finest IT company in the world!!")
 
 
 @app.route('/vowel-service', methods=['POST'])
