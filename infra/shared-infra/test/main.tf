@@ -34,3 +34,15 @@ module "ecs" {
   environment = var.environment
 }
 
+module "ssm" {
+  source      = "../modules/ssm"
+  environment = var.environment
+  aurora_master_username = var.aurora_master_username
+}
+
+module "aurora" {
+  source      = "../modules/aurora"
+  environment = var.environment
+  aurora_master_username = var.aurora_master_username
+  aurora_master_password = module.ssm.aurora_master_password
+}

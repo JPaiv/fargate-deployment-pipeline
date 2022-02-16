@@ -58,7 +58,7 @@ variable "container_count" {
 
 variable "health_check_path" {
   type    = string
-  default = "/"
+  default = "/hello"
 }
 
 variable "fargate_cpu" {
