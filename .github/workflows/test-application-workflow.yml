@@ -19,8 +19,8 @@ jobs:
       run:
         working-directory: ./src
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: "read"
+      id-token: "write"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: '${{ env.TF_VAR_environment }}${{ env.TF_VAR_ecr_repo }}'
+          ECR_REPOSITORY: "${{ env.TF_VAR_environment }}${{ env.TF_VAR_ecr_repo }}"
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -51,7 +51,7 @@ jobs:
     env:
       TF_VAR_image_tag: ${{ github.sha }}
     defaults:
-      run:        
+      run:
         working-directory: ./infra/deployment/test
     steps:
       - uses: actions/checkout@v2
@@ -62,18 +62,17 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.region }}
-  
+
       - name: Terraform Init
         id: init
         run: terraform init
-      
+
       - name: Lint Terraform
         uses: actionshub/terraform-lint@main
 
       # Add just in case there is a locked state
       # - name: 'Unlock terraform state'
       #   run: terraform force-unlock -force <lock_id>
-          
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
@@ -85,5 +84,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
-        run: terraform apply -auto-approve
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform destroy -auto-approve

@@ -6,16 +6,16 @@ env:
   region: eu-west-1
   TF_VAR_default_region: eu-west-1
   TF_VAR_environment: test
-  TF_VAR_aurora_master_username : ${{ secrets.AURORA_MASTER_USERNAME }}
+  TF_VAR_aurora_master_username: ${{ secrets.AURORA_MASTER_USERNAME }}
 
 jobs:
   terraform-deploy-shared-infrastrucsture:
     runs-on: ubuntu-latest
     defaults:
-      run:        
+      run:
         working-directory: ./infra/shared-infra/test
     env:
-      TF_VAR_aurora_master_username : ${{ secrets.AURORA_MASTER_USERNAME }}
+      TF_VAR_aurora_master_username: ${{ secrets.AURORA_MASTER_USERNAME }}
     steps:
       - uses: actions/checkout@v2
 
@@ -25,18 +25,18 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.region }}
-  
+
       - name: Terraform Init
         id: init
         run: terraform init
-        
+
       - name: Lint Terraform
         uses: actionshub/terraform-lint@main
 
       # Add just in case there is a locked state
       # - name: 'Unlock terraform state'
       #   run: terraform force-unlock -force <lock_id>
-          
+
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
@@ -44,9 +44,8 @@ jobs:
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
-        
+        run: terraform destroy -auto-approve
+
       - name: Terraform Output
         id: outputs
         run: terraform output
-    
