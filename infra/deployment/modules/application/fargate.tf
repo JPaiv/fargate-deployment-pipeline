@@ -19,7 +19,7 @@ resource "aws_security_group" "ecs_tasks_security_group" {
   }
 }
 
-resource "aws_ecs_task_definition" "main_ecs_fargate_task-definition" {
+resource "aws_ecs_task_definition" "main_ecs_fargate_task_definition" {
   family                   = "${var.environment}-ecs-fargate-task-definition"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   task_role_arn            = aws_iam_role.ecs_task_role.arn
@@ -50,7 +50,7 @@ DEFINITION
 resource "aws_ecs_service" "main" {
   name            = "${var.environment}-fargate-ecs-service"
   cluster         = var.cluster_id
-  task_definition = aws_ecs_task_definition.main_ecs_fargate_task-definition.arn
+  task_definition = aws_ecs_task_definition.main_ecs_fargate_task_definition.arn
   desired_count   = var.container_count
   launch_type     = "FARGATE"
 
